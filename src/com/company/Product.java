@@ -5,12 +5,16 @@ public class Product {
     protected int aisleNum;
     protected String type;
     protected String brand;
+    protected int qty;
 
-    public Product(String type, String brand, double price, int aisleNum){
+
+
+    public Product(String type, String brand, double price, int aisleNum, int qty){
         this.price = price;
         this.aisleNum = aisleNum;
         this.type = type;
         this.brand = brand;
+        this.qty = qty;
     }
 
     public String getType() {
@@ -24,9 +28,20 @@ public class Product {
     public double getPrice() {
         return price;
     }
+    public int getQty(){
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+
 
     public String toString(){
         return "{ price per pound: " + price + " pounds sold: " + " Number of days in stock: " + " Quantity of stock; "  + " Is the food prepared: " +
                 " Location aisle number: " + aisleNum;
     }
+
+
 }

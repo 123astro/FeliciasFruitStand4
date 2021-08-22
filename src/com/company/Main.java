@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        boolean isOpen = true;
+      boolean isOpen = true;
         Console newConsole = new Console();
 
         do {

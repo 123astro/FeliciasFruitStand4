@@ -1,13 +1,13 @@
 package com.company;
 
-
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Console {
-    //private String selection;
     private Scanner scanner = new Scanner(System.in);
     private Store store;
+
 
     public Console() {
         this.store = new Store();
@@ -32,7 +32,6 @@ public class Console {
         }
     }
 
-
     public void add() {
         System.out.println("What would you like to add?\nFruit? F\nMeat? M");
         String input = scanner.next();
@@ -48,7 +47,17 @@ public class Console {
                 double price = scanner.nextDouble();
                 System.out.println("Which aisle?");
                 int aisle = scanner.nextInt();
-                this.store.addFruit(type, brand, color, price, aisle, (price * .8));
+                System.out.println("Quantity?");
+                int qty1 = scanner.nextInt();
+                for (int i = 0; i < this.store.feliciasProducts.size(); i++)
+                if(Objects.equals(type, this.store.feliciasProducts.get(i).type)) {
+                    if (Objects.equals(brand, this.store.feliciasProducts.get(i).brand)) {
+                        this.store.feliciasProducts.get(i).setQty(this.store.feliciasProducts.get(i).getQty() + qty1);
+                        return;
+                    }
+                }
+                this.store.addFruit(type, brand, color, price, aisle, qty1,
+                        (price * .8));
                 break;
             case "M":
                 System.out.println("Meat type?");
@@ -61,7 +70,9 @@ public class Console {
                 double price2 = scanner.nextDouble();
                 System.out.println("Which aisle?");
                 int aisle2 = scanner.nextInt();
-                this.store.addMeat(type2, brand2, organic, price2, aisle2, (price2 * .5));
+                System.out.println("Quantity?");
+                int qty2 = scanner.nextInt();
+                this.store.addMeat(type2, brand2, organic, price2, aisle2, qty2 , (price2 * .5));
                 break;
             default:
                 add();
@@ -73,6 +84,7 @@ public class Console {
         String input = scanner.next();
         switch (input.toUpperCase(Locale.ROOT)) {
             case "F":
+                this.store.displayFruitProductNames();
                 System.out.println("Fruit type?");
                 String type = scanner.next();
                 System.out.println("Brand?");
@@ -80,6 +92,7 @@ public class Console {
                 this.store.sellProduct(type, brand);
                 break;
             case "M":
+                this.store.displayMeatProductNames();
                 System.out.println("Meat type?");
                 String type1 = scanner.next();
                 System.out.println("Brand?");

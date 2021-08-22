@@ -2,8 +2,8 @@ package com.company;
 class Meat extends Product{
     private String organic;
 
-    public Meat (String type, String brand, String organic, double price, int aisleNum) {
-        super(type, brand, price, aisleNum);
+    public Meat (String type, String brand, String organic, double price, int aisleNum, int qty) {
+        super(type, brand, price, aisleNum, qty);
         this.organic = organic;
     }
 
