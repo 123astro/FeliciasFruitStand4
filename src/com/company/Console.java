@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Console {
@@ -16,10 +15,11 @@ public class Console {
     public void getSelections() {
 
         System.out.println("\nWould you like to:" +
-                "\nAdd ?       1 " +
-                "\nSell ?      2" +
-                "\nRemove ?    3" +
-                "\nInventory ? 4");
+                "\nAdd ?           1 " +
+                "\nSell ?          2" +
+                "\nRemove ?        3" +
+                "\nInventory ?     4" +
+                "\nStore Balance ? 5");
         int input = scanner.nextInt();
         scanner.nextLine();
 
@@ -28,6 +28,7 @@ public class Console {
             case 2 -> this.sell();
             case 3 -> this.remove();
             case 4 -> this.store.displayProducts();
+            case 5 -> this.store.getStoreBalance();
             default -> getSelections();
         }
     }
@@ -49,17 +50,10 @@ public class Console {
                 int aisle = scanner.nextInt();
                 System.out.println("Quantity?");
                 int qty1 = scanner.nextInt();
-                for (int i = 0; i < this.store.feliciasProducts.size(); i++)
-                if(Objects.equals(type, this.store.feliciasProducts.get(i).type)) {
-                    if (Objects.equals(brand, this.store.feliciasProducts.get(i).brand)) {
-                        this.store.feliciasProducts.get(i).setQty(this.store.feliciasProducts.get(i).getQty() + qty1);
-                        return;
-                    }
-                }
-                this.store.addFruit(type, brand, color, price, aisle, qty1,
-                        (price * .8));
+                    this.store.checkAndAddFruitType(type, brand, color, price, aisle, qty1,(price * .8));
                 break;
             case "M":
+
                 System.out.println("Meat type?");
                 String type2 = scanner.next();
                 System.out.println("Brand? examples: Tyson, Sysco, Hormel, Perdue");
@@ -72,7 +66,7 @@ public class Console {
                 int aisle2 = scanner.nextInt();
                 System.out.println("Quantity?");
                 int qty2 = scanner.nextInt();
-                this.store.addMeat(type2, brand2, organic, price2, aisle2, qty2 , (price2 * .5));
+                this.store.checkAndAddMeatType(type2, brand2, organic, price2, aisle2, qty2 , (price2 * .5));
                 break;
             default:
                 add();

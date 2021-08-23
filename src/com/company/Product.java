@@ -33,6 +33,7 @@ public class Product {
     }
 
     public void setQty(int qty) {
+        if(qty >  0 )
         this.qty = qty;
     }
 
