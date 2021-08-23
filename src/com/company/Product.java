@@ -37,8 +37,6 @@ public class Product {
         this.qty = qty;
     }
 
-
-
     public String toString(){
         return "{ price per pound: " + price + " pounds sold: " + " Number of days in stock: " + " Quantity of stock; "  + " Is the food prepared: " +
                 " Location aisle number: " + aisleNum;
