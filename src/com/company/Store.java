@@ -9,6 +9,7 @@ public class Store {
     private double storeBalanceInCents;
     public List<Product> feliciasProducts = new ArrayList<>();
 
+
     public Store() {
         this.storeBalanceInCents = 10_000;
     }
@@ -20,7 +21,7 @@ public class Store {
 
     public void addMeat(String meatType, String brand, String organic, double price, int aisleNum,
                         int qty, double cost) {
-        feliciasProducts.add(((new Meat(meatType, brand, organic, price, aisleNum, qty))));
+        feliciasProducts.add(new Meat(meatType, brand, organic, price, aisleNum, qty));
         storeBalanceInCents -= (cost * qty);
         System.out.println();
         System.out.println("Store Balance: " + storeBalanceInCents);
@@ -64,6 +65,7 @@ public class Store {
     public void displayProducts() {
         for (Product product : feliciasProducts) {
             System.out.println(product.type.toUpperCase(Locale.ROOT) + " " + product.brand.toUpperCase(Locale.ROOT) + " " + "Qty: " + product.qty);
+            System.out.println(product.toString());
         }
     }
 

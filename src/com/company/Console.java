@@ -12,14 +12,16 @@ public class Console {
         this.store = new Store();
     }
 
-    public void getSelections() {
+    public boolean getSelections() {
 
         System.out.println("\nWould you like to:" +
                 "\nAdd ?           1 " +
                 "\nSell ?          2" +
                 "\nRemove ?        3" +
                 "\nInventory ?     4" +
-                "\nStore Balance ? 5");
+                "\nStore Balance ? 5" +
+                "\nClose Store ?   6"
+        );
         valid();
         int input = scanner.nextInt();
         scanner.nextLine();
@@ -30,16 +32,22 @@ public class Console {
             case 3 -> this.remove();
             case 4 -> this.store.displayProducts();
             case 5 -> this.store.getStoreBalance();
-            default -> getSelections();
+            case 6 -> {
+                return false;
+            }
+            default -> getSelections(); //else
         }
+        System.out.println(input);
+        return true;
     }
 
-    public void valid(){
+    public void valid() {
         while (!scanner.hasNextInt()) {
             System.out.println("Input needs to be one of the numbers above.");
             scanner.nextLine();
         }
     }
+
 
     public void add() {
         System.out.println("What would you like to add?\nFruit? F\nMeat? M");
@@ -91,7 +99,7 @@ public class Console {
                 System.out.println("Brand?");
                 String brand = scanner.next();
                 System.out.println("How many would you like to sell?");
-                int qty1= scanner.nextInt();
+                int qty1 = scanner.nextInt();
                 this.store.sellProduct(type, brand, qty1);
                 break;
             case "M":
@@ -101,7 +109,7 @@ public class Console {
                 System.out.println("Brand?");
                 String brand2 = scanner.next();
                 System.out.println("How many would you like to sell?");
-                int qty2= scanner.nextInt();
+                int qty2 = scanner.nextInt();
                 this.store.sellProduct(type2, brand2, qty2);
                 break;
             default:
@@ -120,7 +128,7 @@ public class Console {
                 System.out.println("Brand?");
                 String brand = scanner.next();
                 System.out.println("How many would you like to remove?");
-                int qty1= scanner.nextInt();
+                int qty1 = scanner.nextInt();
                 this.store.removeProduct(type, brand, qty1);
                 break;
             case "M":
@@ -130,7 +138,7 @@ public class Console {
                 System.out.println("Brand?");
                 String brand2 = scanner.next();
                 System.out.println("How many would you like to remove?");
-                int qty2= scanner.nextInt();
+                int qty2 = scanner.nextInt();
                 this.store.removeProduct(type1, brand2, qty2);
                 break;
             default:

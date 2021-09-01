@@ -15,6 +15,7 @@ class Meat extends Product{
                 ", aisleNum=" + aisleNum +
                 ", organic='" + organic + '\'' +
                 ", brand='" + brand + '\'' +
+                ", quantity=" + qty + '\'' +
                 '}';
     }
 }

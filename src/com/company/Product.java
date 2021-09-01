@@ -1,6 +1,6 @@
 package com.company;
 
-public class Product {
+public abstract class Product {
     protected double price;
     protected int aisleNum;
     protected String type;
@@ -37,10 +37,10 @@ public class Product {
         this.qty = qty;
     }
 
-    public String toString(){
-        return "{ price per pound: " + price + " pounds sold: " + " Number of days in stock: " + " Quantity of stock; "  + " Is the food prepared: " +
-                " Location aisle number: " + aisleNum;
-    }
+//    public String toString(){
+//        return "{ price per pound: " + price + " pounds sold: " + " Number of days in stock: " + " Quantity of stock; "  + " Is the food prepared: " +
+//                " Location aisle number: " + aisleNum;
+//    }
 
 
 }

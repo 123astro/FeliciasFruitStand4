@@ -13,9 +13,10 @@ public class Fruit extends Product {
         return "Fruit{" +
                 "type='" + type + '\'' +
                 ", price=" + price +
-                ", aisleNum=" + aisleNum +
+                ", aisleNum= " + aisleNum +
                 ", fruitColor='" + fruitColor + '\'' +
-                ", brand='" + brand + '\'' +
+                ", brand= '" + brand + '\'' +
+                ", quantity= " + qty + '\'' +
                 '}';
     }
 }
